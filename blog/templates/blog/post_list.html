@@ -1,0 +1,70 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<form method="GET" class="mb-4">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search posts..." class="form-control mb-2" />
+    <select name="category_name" class="form-control mb-2">
+        <option value="">All Categories</option>
+        {% for category in categories %}
+            <option value="{{ category.name }}" {% if category.name == query %}selected{% endif %}>{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+
+<div class="container my-4">
+    <div class="row">
+        <!-- Post List Column (8 parts) -->
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <h1 class="text-center">Blog Posts</h1>
+            <div class="post-list">
+                {% for post in page_obj %}
+                    <div class="post mb-4 p-3 border rounded shadow-sm">
+                        <h2><a href="{% url 'post_detail' post.id %}" class="text-dark">{{ post.title }}</a></h2>
+                        <p class="text-muted">{{ post.created_at|date:"F j, Y" }}</p>
+                        <p>{{ post.content|truncatewords:30 }}</p>
+                        <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Read More</a>
+                    </div>
+                {% empty %}
+                    <p class="text-center">No posts available.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Recent Posts Column (4 parts) -->
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <h2>Recent Posts</h2>
+            <div class="recent-posts">
+                {% for recent_post in recent_posts %}
+                    <div class="recent-post mb-2">
+                        <h5><a href="{% url 'post_detail' recent_post.id %}" class="text-dark">{{ recent_post.title }}</a></h5>
+                        <p class="text-muted">{{ recent_post.created_at|date:"F j, Y" }}</p>
+                    </div>
+                {% empty %}
+                    <p>No recent posts available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

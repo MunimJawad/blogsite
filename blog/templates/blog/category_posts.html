@@ -1,0 +1,63 @@
+{% extends 'blog/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{{ category.name }}{% endblock %}
+    
+
+    <style>
+        .container {
+    background-color: #f8f9fa; /* Light background for the container */
+    padding: 20px; /* Padding around the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+h1 {
+    color: #343a40; /* Dark text for the heading */
+}
+
+.list-group-item {
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef; /* Light gray background on hover */
+}
+
+a {
+    text-decoration: none; /* Remove underline from links */
+}
+
+.btn-secondary {
+    margin-top: 20px; /* Space above the button */
+}
+
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Posts in Category: {{ category.name }}</h1>
+
+    <ul class="list-group mb-4">
+        {% for post in posts %}
+            <li class="list-group-item">
+                <a href="{% url 'post_detail' post.id %}" class="text-dark fw-bold">{{ post.title }}</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No posts found in this category.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+</div>
+{% endblock %}

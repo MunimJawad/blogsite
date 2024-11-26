@@ -1,0 +1,108 @@
+{% extends 'blog/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}About Us{% endblock %}
+
+    <style>
+        .container {
+    background-color: #f8f9fa; /* Light background for the container */
+    padding: 40px; /* Increased padding for better spacing */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    max-width: 800px; /* Limiting the width for readability */
+    margin: 0 auto; /* Centering the container */
+}
+
+h1 {
+    font-size: 2.5rem; /* Larger font size for the main heading */
+    color: #007bff; /* Blue color for the main heading */
+    margin-bottom: 20px; /* Space below the heading */
+    text-align: center; /* Center alignment */
+}
+
+h2 {
+    font-size: 1.75rem; /* Slightly smaller than h1 */
+    color: #343a40; /* Dark text for subheadings */
+    margin-top: 30px; /* Space above subheadings */
+    margin-bottom: 15px; /* Space below subheadings */
+}
+
+p {
+    line-height: 1.6; /* Improved line height for readability */
+    color: #495057; /* Darker gray for paragraph text */
+    margin-bottom: 20px; /* Space below paragraphs */
+}
+
+ul {
+    list-style-type: disc; /* Default list style */
+    margin-left: 20px; /* Left margin for the list */
+    color: #495057; /* Darker gray for list text */
+}
+
+ul li {
+    margin-bottom: 10px; /* Space between list items */
+}
+
+a {
+    color: #007bff; /* Bootstrap primary color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+.btn {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding for the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Block display for spacing */
+    margin-top: 20px; /* Space above button */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+    </style>
+</head>
+<body>
+    
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">About Us</h1>
+    
+    <p>Welcome to <strong>MJBLOG</strong>! Our blog is dedicated to sharing insightful articles, personal stories, and valuable information across a variety of topics, including technology, lifestyle, travel, and more.</p>
+    
+    <h2>Our Mission</h2>
+    <p>At MJBLOG, our mission is to inspire and inform our readers by providing high-quality content that resonates with their interests and needs. We believe that knowledge should be accessible to everyone, and we strive to create a community of engaged readers.</p>
+    
+    <h2>Meet the Team</h2>
+    <p>Our team consists of passionate writers, researchers, and enthusiasts who are dedicated to bringing you the best content possible. We are always exploring new ideas and topics to share with our readers.</p>
+    
+    <h2>What to Expect</h2>
+    <p>On MJBLOG, you can expect:</p>
+    <ul>
+        <li>Informative articles that cover the latest trends and topics.</li>
+        <li>Personal stories and experiences from our contributors.</li>
+        <li>Engaging discussions in the comments section where you can share your thoughts.</li>
+        <li>Regular updates and fresh content to keep you coming back.</li>
+    </ul>
+    
+    <p>Thank you for visiting MJBLOG! We hope you enjoy reading our content as much as we enjoy creating it. Feel free to reach out if you have any questions or suggestions.</p>
+</div>
+{% endblock %}
+</body>
+</html>
+
+
+
